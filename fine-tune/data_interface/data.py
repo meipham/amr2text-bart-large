@@ -47,11 +47,11 @@ class AMRData(datasets.GeneratorBasedBuilder):
             datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": test_path}),
         ]
 
-    def _generate_examples(self, filepaths):
+    def _generate_examples(self, filepath):
         """Yields examples."""
-        logger.info("generating examples from = %s", filepaths)
-        for filepath in filepaths:
-            with open(filepath, "r", encoding="utf-8") as f:
+        logger.info("generating examples from = %s", filepath)
+        for path in filepath:
+            with open(path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
                 for idx, line in enumerate(lines):
                     json_dict = json.loads(line.strip())
