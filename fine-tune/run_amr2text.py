@@ -185,6 +185,6 @@ if __name__ == "__main__":
     parser = add_model_specific_args(parser, os.getcwd())
     parser = pl.Trainer.add_argparse_args(parser)
     args = parser.parse_args()
-    args.gpus=[1]
+    # args.gpus=[1]
 
     main(args)
