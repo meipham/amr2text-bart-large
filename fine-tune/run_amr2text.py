@@ -90,7 +90,7 @@ def load_callbacks(args, model):
     if args.lr_scheduler:
         callbacks.append(plc.LearningRateMonitor(logging_interval="step"))
 
-    callbacks.append(CheckpointEveryNSteps(1000))
+#     callbacks.append(CheckpointEveryNSteps(1000))
 
     return callbacks
 
