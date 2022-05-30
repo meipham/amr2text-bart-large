@@ -274,9 +274,9 @@ class AMR2TextModelModule(pl.LightningModule):
         logs["bs"] = batch["input_ids"].shape[0]
         logs["src_pad_tok"] = batch["input_ids"].eq(self.pad).sum()
         logs["src_pad_frac"] = batch["input_ids"].eq(self.pad).float().mean()
-        logs["lr"] = self.trainer.lr_scheduler_configs["scheduler"].get_last_lr()[0]
+        logs["lr"] = self.trainer.lr_schedulers[0]["scheduler"].get_last_lr()[0]
         # self.log("train_loss", loss_tensors[0].detach(), prog_bar=True)
-        self.log("lr", self.trainer.lr_scheduler_configs["scheduler"].get_last_lr()[0], prog_bar=True)
+        self.log("lr", self.trainer.lr_schedulers[0]["scheduler"].get_last_lr()[0], prog_bar=True)
         return {"loss": loss_tensors[0], "logs": logs}
 
     def training_epoch_end(self, outputs, prefix="train") -> Dict:
